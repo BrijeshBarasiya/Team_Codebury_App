@@ -1,5 +1,6 @@
 package com.codebury.simfocus.splash_screen
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -15,7 +16,7 @@ import com.codebury.simfocus.R
 import com.codebury.simfocus.authentication.AuthLoginScreen
 import com.codebury.simfocus.main_activity.MainActivity
 
-
+@SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var topAnimation: Animation

@@ -51,6 +51,8 @@
     <string name="signUpText">SIGN UP</string>
     <string name="have_account">Already have account? Sign In</string>
     <string name="dont_have_account">Do not have an Account? Sign UP</string>
+    <string name="chatsearch">chatSearch</string>
+    <string name="addpost">AddPost</string>
     <string name="emailSuffix">\@simformsolutions.com</string>
     <string name="emptyUsernameError">Email should not be empty.</string>
     <string name="invalidPasswordError">Please Enter valid Password</string>

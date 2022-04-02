@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/navigationSearch"
         android:name="com.codebury.simfocus.fragments.SearchFragment"
-        android:label="@string/chat"
+        android:label="@string/search"
         tools:layout="@layout/fragment_search" />
 
     <fragment

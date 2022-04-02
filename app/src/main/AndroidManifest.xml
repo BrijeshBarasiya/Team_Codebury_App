@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.codebury.simfocus">
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_simfocus_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_simfocus_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SimFocus">
-<!--        <activity-->
-<!--            android:name=".dashboard.dashboardActivity"-->
-<!--            android:exported="true" />-->
-<!--            <activity-->
-<!--            android:name=".chatmodule.ChatScreen"-->
-<!--            android:exported="false" />-->
-            <activity
+        <activity
             android:name=".main_activity.MainActivity"
-            android:exported="true" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".authentication.AuthLoginScreen"
             android:exported="false" />
@@ -33,16 +32,9 @@
             android:name=".splash_screen.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
 
-<!--        <activity-->
-
-<!--            android:name=".MainActivity"-->
-<!--            android:exported="true" />-->
     </application>
 
 </manifest>

@@ -1,13 +1,17 @@
 package com.codebury.simfocus.main_activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.codebury.simfocus.R
 import com.simform.custombottomnavigation.Model
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,5 +47,13 @@ class MainActivity : AppCompatActivity() {
             setupWithNavController(navController)
         }
 
+
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.appbar_add_post_menu, menu)
+        return true
+    }
+
 }
