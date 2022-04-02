@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="offWhite">#F1DCDE</color>
+    <color name="dark_cyan">#075e54</color>
     <color name="offWhite">#FAF5F5</color>
     //Color Pallet
     <color name="simform_0">#F1DCDE</color>
@@ -8,14 +10,19 @@
     <color name="simform_200">#F17684</color>
     <color name="simform_500">#EF5366</color>
     <color name="simform_700">#F73B51</color>
+    <color name="yellow">#F9DB7B</color>
+
     //Bg Colors
-    <color name="mainBgColor">@color/white</color>
+    <color name="mainBgColor">@color/offWhite</color>
     <color name="exceptionBgColor">@color/simform_500</color>
-    <color name="topBgColor">@color/offWhite</color>
+    <color name="topBgColor">@color/simform_0</color>
+
     //Text colors
     <color name="hintColor">@color/simform_200</color>
     <color name="specialTextColor">@color/simform_500</color>
     <color name="normalTextColor">@color/black</color>
+
+
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
