@@ -10,10 +10,8 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
-import com.codebury.simfocus.MainActivity
 import com.codebury.simfocus.R
-import com.codebury.simfocus.authentication.AuthLoginScreen
-import com.codebury.simfocus.authentication.AuthSignUpScreen
+import com.codebury.simfocus.main_activity.MainActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
@@ -35,7 +33,7 @@ class SplashActivity : AppCompatActivity() {
         bottomPartTv.animation = bottomAnimation
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, AuthLoginScreen::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }, 2000)

@@ -10,12 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SimFocus">
         <activity
-            android:name=".dashboard.dashboardActivity"
-            android:exported="true" >
-            <activity
-            android:name=".chatmodule.ChatScreen"
-            android:exported="false" />
-            <activity
+            android:name=".main_activity.MainActivity"
+            android:exported="true" />
+        <activity
             android:name=".authentication.AuthLoginScreen"
             android:exported="false" />
 
@@ -36,6 +33,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
+
     </application>
 
 </manifest>
