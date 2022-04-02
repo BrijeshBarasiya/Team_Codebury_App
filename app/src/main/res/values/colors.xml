@@ -3,6 +3,7 @@
 
     <color name="dark_cyan">#075e54</color>
     <color name="offWhite">#FAF5F5</color>
+    <color name="transparent">#00000000</color>
     //Color Pallet
     <color name="simform_0">#F1DCDE</color>
     <color name="simform_100">#F1A6AE</color>
