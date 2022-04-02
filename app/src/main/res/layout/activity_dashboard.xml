@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".dashboard.dashboardActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainer"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/fragmentnavigation" />
+
+    <com.simform.custombottomnavigation.SSCustomBottomNavigation
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:ss_backgroundBottomColor="@color/simform_500"
+        app:ss_circleColor="@color/white"
+        app:ss_countBackgroundColor="@color/white"
+        app:ss_countTextColor="#ffffff"
+        app:ss_defaultIconColor="@color/white"
+        app:ss_iconTextColor="@color/white"
+        app:ss_iconTextSize="14sp"
+        app:ss_rippleColor="#2f424242"
+        app:ss_selectedIconColor="@color/white"
+        app:ss_selectedIconTextColor="@color/white"
+        app:ss_shadowColor="#1f212121"
+        app:ss_waveHeight="7" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
