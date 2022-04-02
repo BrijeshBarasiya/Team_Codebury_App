@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">SimFocus</string>
-
+    <string name="no_image">Image Loading</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password ?</string>
     <string name="appMoto">Very own Social Media App of Simform</string>
     <string name="logoText">App Logo</string>
+    <string name="dont_have_account">Do not have an Account? Sign UP</string>
 </resources>
