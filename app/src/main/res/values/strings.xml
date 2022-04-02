@@ -16,5 +16,34 @@
     <string name="forgot_password">Forgot Password ?</string>
     <string name="appMoto">Very own Social Media App of Simform</string>
     <string name="logoText">App Logo</string>
+    <string name="fNameText">First Name</string>
+    <string name="lNameText">Last Name</string>
+    <string name="emailText">Email</string>
+    <string name="departmentText">Select Department</string>
+    <array name="departmentArray">
+        <item>Mobile Development</item>
+        <item>React Native</item>
+        <item>Flutter</item>
+        <item>Python</item>
+        <item>DevOps</item>
+        <item>HR</item>
+        <item>UI/UX</item>
+        <item>Open Source</item>
+        <item>QA</item>
+    </array>
+
+    <string name="jobTittleText">Job Title</string>
+    <array name="jobTitlesArray">
+        <item>Trainee</item>
+        <item>Employee</item>
+        <item>Senior Software Engineer</item>
+        <item>Senior Developer</item>
+        <item>Junior Developer</item>
+    </array>
+    <string name="genderText">Gender</string>
+    <string name="maleText">Male</string>
+    <string name="femaleText">Female</string>
+    <string name="signUpText">SIGN UP</string>
+    <string name="have_account">Already have account? Sign In</string>
     <string name="dont_have_account">Do not have an Account? Sign UP</string>
 </resources>

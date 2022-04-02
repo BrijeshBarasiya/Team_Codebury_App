@@ -13,6 +13,7 @@ import android.widget.TextView
 import com.codebury.simfocus.MainActivity
 import com.codebury.simfocus.R
 import com.codebury.simfocus.authentication.AuthLoginScreen
+import com.codebury.simfocus.authentication.AuthSignUpScreen
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
