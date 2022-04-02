@@ -51,4 +51,7 @@
     <string name="signUpText">SIGN UP</string>
     <string name="have_account">Already have account? Sign In</string>
     <string name="dont_have_account">Do not have an Account? Sign UP</string>
+    <string name="department">Department</string>
+    <string name="job_title">Job Title</string>
+    <string name="edit_profile">Edit Profile</string>
 </resources>

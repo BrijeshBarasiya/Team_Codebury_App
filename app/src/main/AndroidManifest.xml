@@ -10,12 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SimFocus">
         <activity
-            android:name=".dashboard.dashboardActivity"
+            android:name=".users.UsersProfileScreen"
             android:exported="true" >
-            <activity
-            android:name=".chatmodule.ChatScreen"
-            android:exported="false" />
-            <activity
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".main_activity.MainActivity"
+            android:exported="true" />
+        <activity
             android:name=".authentication.AuthLoginScreen"
             android:exported="false" />
 
@@ -31,11 +38,15 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
 
         <activity
             android:name=".MainActivity"
             android:exported="true" />
+
+            android:exported="false" />
     </application>
 
 </manifest>

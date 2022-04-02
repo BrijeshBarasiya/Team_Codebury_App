@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".users.UsersProfileScreen">
+
+    <View
+        android:id="@+id/blankViewSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_160sdp"
+        android:background="@color/simform_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/signUpCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="@dimen/_60sdp"
+                android:elevation="@dimen/_5sdp"
+                app:cardBackgroundColor="@color/topBgColor"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:text="@string/username"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="@color/specialTextColor"
+                        android:textStyle="bold"
+                        tools:ignore="RtlHardcoded" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_10sdp"
+                        android:weightSum="2">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/profile_image"
+                            android:layout_width="96dp"
+                            android:layout_height="124dp"
+                            android:src="@drawable/ic_person"
+                            app:civ_border_color="#FF000000"
+                            app:civ_border_width="2dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_5sdp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/username"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:drawablePadding="@dimen/_5sdp"
+                                android:padding="@dimen/_5sdp"
+                                app:drawableStartCompat="@drawable/ic_person" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/department"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:drawablePadding="@dimen/_5sdp"
+                                android:padding="@dimen/_5sdp"
+                                app:drawableStartCompat="@drawable/ic_department" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/job_title"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:drawablePadding="@dimen/_10sdp"
+                                android:padding="@dimen/_5sdp"
+                                app:drawableStartCompat="@drawable/ic_job" />
+
+                        </LinearLayout>
+
+                </LinearLayout>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/edit_profile"
+                        android:layout_marginHorizontal="@dimen/_15sdp"/>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/profileRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/all_post_design"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3"
+                android:layout_margin="@dimen/_10sdp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

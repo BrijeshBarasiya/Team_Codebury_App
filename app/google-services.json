@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "903073388715",
+    "project_id": "simfocus-ef442",
+    "storage_bucket": "simfocus-ef442.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:903073388715:android:84c2cbe0a5e3205fe23fee",
+        "android_client_info": {
+          "package_name": "com.codebury.simfocus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "903073388715-o35ocvnk6sjf6igk21jmvbbl3jaog955.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBR45LLwRGMrGeybJq3y0bf4EWbHICfBjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "903073388715-o35ocvnk6sjf6igk21jmvbbl3jaog955.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
