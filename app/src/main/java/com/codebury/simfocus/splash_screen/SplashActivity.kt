@@ -35,7 +35,7 @@ class SplashActivity : AppCompatActivity() {
         bottomPartTv.animation = bottomAnimation
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, AuthLoginScreen::class.java)
+            val intent = Intent(this, AuthSignUpScreen::class.java)
             startActivity(intent)
             finish()
         }, 2000)
