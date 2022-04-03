@@ -17,7 +17,7 @@ import com.google.firebase.storage.FirebaseStorage
 private lateinit var alertDialog: AlertDialog
 
 fun loadImage(url : String?, uploadImage : ImageView){
-    Glide.with(uploadImage).load(url).into(uploadImage)
+    Glide.with(uploadImage).load(url).placeholder(R.drawable.loading).into(uploadImage)
 }
 
 fun uploadToFirebase(context: Context,imageUri: Uri, folderName: String ,completionHandler: (input: String) -> Unit) {

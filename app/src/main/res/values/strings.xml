@@ -61,4 +61,9 @@
     <string name="enterLastName">Enter Last Name</string>
     <string name="departmentError">Department Must be Selected</string>
     <string name="jobTitleError">JobTitle Must be Selected</string>
+    <string name="log_out">Log Out</string>
+    <string name="temp_username">shubham.vyas</string>
+    <string name="temp_name">Shubham Vyas</string>
+    <string name="temp_job">Trainee - Mobile Development</string>
+    <string name="edit_profile">Edit Profile</string>
 </resources>
