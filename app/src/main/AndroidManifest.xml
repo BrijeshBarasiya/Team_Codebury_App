@@ -28,27 +28,24 @@
 
         <activity
             android:name=".feed.Feed"
-            android:exported="true">
+            android:exported="true" />
+        <activity
+            android:name=".authentication.AuthLoginScreen"
+            android:exported="false" />
+        <activity
+            android:name=".main_activity.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".splash_screen.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity
-            android:name=".chatmodule.ChatScreen"
-            android:exported="false" />
-        <activity
-            android:name=".authentication.AuthLoginScreen"
-            android:exported="false" />
-        <activity
-            android:name=".splash_screen.SplashActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+
     </application>
 
 </manifest>

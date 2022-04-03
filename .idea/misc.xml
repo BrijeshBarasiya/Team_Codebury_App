@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/layout/activity_add_post.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_auth_login_screen.xml" value="0.3177083333333333" />
+        <entry key="app/src/main/res/layout/activity_auth_sign_up_screen.xml" value="0.2655109489051095" />
+        <entry key="app/src/main/res/layout/activity_comment_screen.xml" value="0.13958333333333334" />
+        <entry key="app/src/main/res/layout/activity_feed.xml" value="0.30104166666666665" />
+        <entry key="app/src/main/res/layout/dialog_comment_ui.xml" value="0.13958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3203125" />
+        <entry key="app/src/main/res/layout/item_simple_dropdown.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/item_simple_dropdown_jobtitles.xml" value="0.21822916666666667" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

@@ -31,7 +31,7 @@ interface ApiInterface {
             .create()
         fun getRetrofitObject(): ApiInterface{
 
-            val retrofit =Retrofit.Builder().client(okHttpClientBuilder.build()).baseUrl("https://5f17-14-99-102-226.ngrok.io").addConverterFactory(GsonConverterFactory.create(
+            val retrofit =Retrofit.Builder().client(okHttpClientBuilder.build()).baseUrl("https://codeburry.simform.solutions").addConverterFactory(GsonConverterFactory.create(
                 gson))
                     .build().create(ApiInterface::class.java)
             return retrofit

@@ -1,6 +1,8 @@
 package com.codebury.simfocus.feed
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.view.LayoutInflater
@@ -11,12 +13,14 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.RecyclerView
 import com.codebury.simfocus.R
+import com.codebury.simfocus.chatmodule.CommentScreen
 import com.codebury.simfocus.chatmodule.PostModelClass
+import com.codebury.simfocus.fragments.HomeFragment
 import com.codebury.simfocus.helper.loadImage
 import de.hdodenhof.circleimageview.CircleImageView
 
 
-class PostAdapter(private val PostList: List<PostModelClass>) :
+class PostAdapter(private val PostList: List<PostModelClass>, val activity: HomeFragment) :
     RecyclerView.Adapter<PostAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -48,6 +52,10 @@ class PostAdapter(private val PostList: List<PostModelClass>) :
                 }
             }
         })
+        holder.imgcomment.setOnClickListener {
+            val intent = Intent(activity.context, CommentScreen::class.java)
+            this.activity.startActivity(intent)
+        }
         holder.imgLike.setOnClickListener {
             holder.imgLike.animate().apply {
                 duration = 1000
@@ -91,6 +99,7 @@ class PostAdapter(private val PostList: List<PostModelClass>) :
         val Post: ImageButton = itemView.findViewById(R.id.Post)
         val imgPost: ImageButton = itemView.findViewById(R.id.Post)
         val imgLike: ImageButton = itemView.findViewById(R.id.likeBtn)
+        val imgcomment: ImageButton = itemView.findViewById(R.id.commentBtn)
     }
 
 }
