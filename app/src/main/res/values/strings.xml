@@ -50,6 +50,8 @@
     <string name="femaleText">Female</string>
     <string name="signUpText">SIGN UP</string>
     <string name="have_account">Already have account? Sign In</string>
+    <string name="name">Name</string>
+    <string name="message">Your Caption goes here</string>
     <string name="dont_have_account">Do not have an Account? Sign UP</string>
     <string name="emailSuffix">\@simformsolutions.com</string>
     <string name="emptyUsernameError">Email should not be empty.</string>
@@ -66,4 +68,7 @@
     <string name="temp_name">Shubham Vyas</string>
     <string name="temp_job">Trainee - Mobile Development</string>
     <string name="edit_profile">Edit Profile</string>
+    <string name="add_comment">Add Comment</string>
+    <string name="caption">Enter Caption </string>
+    <string name="post">Post Now</string>
 </resources>
