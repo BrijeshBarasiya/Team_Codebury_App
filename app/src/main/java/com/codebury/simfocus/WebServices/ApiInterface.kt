@@ -19,12 +19,12 @@ interface ApiInterface {
     @Headers("Accept: application/json")
     @POST("/api/login")
     fun signInUser(@Body userData: LogInDataClass ): Call<LogInDataClass>
+//    @POST("/api/dashboard")
+////    fun feedUser(@Body userData: LogInDataClass): Call<>
 
     companion object {
         private val okHttpClientBuilder = OkHttpClient.Builder().apply {
-
-                addInterceptor(OkHttpProfilerInterceptor())
-
+           addInterceptor(OkHttpProfilerInterceptor())
         }
         var gson = GsonBuilder()
             .setLenient()

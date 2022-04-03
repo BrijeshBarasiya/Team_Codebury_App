@@ -4,7 +4,6 @@ import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
@@ -39,37 +38,32 @@ import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.view.maleRb
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 import com.codebury.simfocus.helper.Constants
 import com.codebury.simfocus.helper.endLoading
 import com.codebury.simfocus.helper.startLoading
 import com.codebury.simfocus.helper.uploadToFirebase
 import com.google.firebase.storage.FirebaseStorage
 import de.hdodenhof.circleimageview.CircleImageView
-
 import java.io.File
 import java.util.regex.Pattern
 import kotlin.math.sign
-import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.etDepartment
-import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.etEmail
-import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.etFirstName
-import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.etJobTitle
-import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.etLastName
 import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.profileImageView
-import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.signUpBtn
 
 class AuthSignUpScreen : AppCompatActivity() {
     lateinit var retrofit: ApiInterface
 
     var storageRef = FirebaseStorage.getInstance().getReference("profiles")
     lateinit var imageUri: Uri
-    val emailPattern = Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
-            "\\@simformsolutions.com" +
-            "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
-            "(" +
-            "\\." +
-            "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
-            ")+")
+    val emailPattern = Pattern.compile(
+        "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                "\\@simformsolutions.com" +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                "(" +
+                "\\." +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                ")+"
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth_sign_up_screen)
@@ -107,14 +101,67 @@ class AuthSignUpScreen : AppCompatActivity() {
 
         retrofit = ApiInterface.getRetrofitObject()
         btnSignUP.setOnClickListener {
+
+            if (etEmail.text.toString() == "" || etFirstName.text.toString() == "" || etLastName.text.toString() == "") {
+                etEmail.error = "Required*"
+                etFirstName.error = "Required*"
+                etLastName.error = "Required*"
+            } else if (emailPattern.matcher(etEmail.text!!).matches()) {
+                etEmail.error = getString(R.string.invalidUsernameError)
+            } else {
+                Toast.makeText(this, "Welcome To SimFocus", Toast.LENGTH_SHORT).show()
+            }
+
+            fun uploadData(url: String) {
+                val newUser = RegisterDataX(
+                    etFirstName.text.toString(),
+                    etLastName.text.toString(),
+                    etEmail.text.toString(),
+                    etDepartment.text.toString(),
+                    genderRg.maleRb.text.toString(),
+                    etJobTitle.text.toString(),
+                    url,
+                    etPassword.text.toString(),
+                    etDateOfBirth.text.toString(),
+                    "true"
+                )
+                Thread().run {
+                    retrofit.registerUser(newUser).enqueue(object : Callback<RegisterDataX> {
+
+                        override fun onResponse(
+                            call: Call<RegisterDataX>,
+                            response: Response<RegisterDataX>
+                        ) {
+                            Log.e("User", "New User")
+                            val intent = Intent(this@AuthSignUpScreen, AuthLoginScreen::class.java)
+                            startActivity(intent)
+                            runOnUiThread {
+                                endLoading()
+                                finish()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<RegisterDataX>, t: Throwable) {
+                            Log.e("User", "New User not added")
+                            runOnUiThread {
+                                endLoading()
+                                Toast.makeText(
+                                    this@AuthSignUpScreen,
+                                    "Login Unsuccesfull",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+                    })
+                }
+            }
             startLoading(this)
-            uploadToFirebase(this,imageUri,Constants.PROFILE_PICTURE_FOLDER) { url ->
+            uploadToFirebase(this, imageUri, Constants.PROFILE_PICTURE_FOLDER) { url ->
                 uploadData(url)
             }
 
         }
 
-        val profileImage: CircleImageView = findViewById(R.id.profileImageView)
 
         imageUri = Uri.fromFile(File("../../drawable/default_avatar.png"))
 
@@ -138,17 +185,17 @@ class AuthSignUpScreen : AppCompatActivity() {
             launcher.launch(i)
         }
         etFirstName.doOnTextChanged { text, start, before, count ->
-            if (etFirstName.length()==0) {
+            if (etFirstName.length() == 0) {
                 etFirstName.error = getString(R.string.enterFirstNAme)
             }
         }
         etLastName.doOnTextChanged { text, start, before, count ->
-            if (etLastName.length()==0) {
+            if (etLastName.length() == 0) {
                 etLastName.error = getString(R.string.enterLastName)
             }
         }
         etEmail.doOnTextChanged { text, start, before, count ->
-            if (etEmail.length() == 0 ) {
+            if (etEmail.length() == 0) {
                 etEmail.error = getString(R.string.invalidUsernameError)
             }
         }
@@ -161,58 +208,6 @@ class AuthSignUpScreen : AppCompatActivity() {
             if (etJobTitle.text.toString().isEmpty()) {
                 etJobTitle.error = getString(R.string.jobTittleText)
             }
-        }
-        signUpBtn.setOnClickListener {
-
-                uploadToFirebase(this, imageUri, Constants.PROFILE_PICTURE_FOLDER)
-
-                if(etEmail.text.toString() == "" || etFirstName.text.toString() == "" || etLastName.text.toString() == "" ) {
-                etEmail.error = "Required*"
-                etFirstName.error = "Required*"
-                etLastName.error = "Required*"
-            } else if(emailPattern.matcher(etEmail.text!!).matches()) {
-                etEmail.error = getString(R.string.invalidUsernameError)
-            } else {
-                Toast.makeText(this, "Welcome To SimFocus", Toast.LENGTH_SHORT).show()
-            }
-
-    fun uploadData(url: String) {
-        val newUser = RegisterDataX(
-            etFirstName.text.toString(),
-            etLastName.text.toString(),
-            etEmail.text.toString(),
-            etDepartment.text.toString(),
-            genderRg.maleRb.text.toString(),
-            etJobTitle.text.toString(),
-            url,
-            etPassword.text.toString(),
-            etDateOfBirth.text.toString(),
-            "true"
-        )
-        Thread().run{
-            retrofit.registerUser(newUser).enqueue(object : Callback<RegisterDataX> {
-
-                override fun onResponse(
-                    call: Call<RegisterDataX>,
-                    response: Response<RegisterDataX>
-                ) {
-                    Log.e("User", "New User")
-                    val intent = Intent(this@AuthSignUpScreen, AuthLoginScreen::class.java)
-                    startActivity(intent)
-                    runOnUiThread {
-                        endLoading()
-                        finish()
-                    }
-                }
-
-                override fun onFailure(call: Call<RegisterDataX>, t: Throwable) {
-                    Log.e("User", "New User not added")
-                    runOnUiThread {
-                        endLoading()
-                        Toast.makeText(this@AuthSignUpScreen, "Login Unsuccesfull", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            })
         }
     }
 }
