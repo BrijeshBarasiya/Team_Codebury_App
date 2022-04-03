@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val activeIndex = savedInstanceState?.getInt("activeIndex") ?: 2
+        val activeIndex = savedInstanceState?.getInt("activeIndex") ?: 0
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
         val navController = navHostFragment.navController

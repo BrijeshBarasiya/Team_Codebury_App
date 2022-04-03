@@ -77,14 +77,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_10sdp"
-                        android:hint="@string/username"
-                        app:suffixText="@string/emailSuffix"
-                        app:suffixTextAppearance="@string/emailSuffix"
-                        app:suffixTextColor="@color/simform_500"
+                        android:hint="@string/emailText"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:startIconDrawable="@drawable/ic_person"
+                        app:startIconDrawable="@drawable/ic_email"
                         app:errorEnabled="true"
                         app:startIconTint="@color/simform_500">
 

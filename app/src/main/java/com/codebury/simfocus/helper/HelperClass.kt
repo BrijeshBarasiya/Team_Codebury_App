@@ -20,7 +20,7 @@ fun loadImage(url : String?, uploadImage : ImageView){
     Glide.with(uploadImage).load(url).into(uploadImage)
 }
 
-fun uploadToFirebase(context: Context,imageUri: Uri, folderName: String) : String? {
+fun uploadToFirebase(context: Context,imageUri: Uri, folderName: String ,completionHandler: (input: String) -> Unit) {
 
     val storageRef = FirebaseStorage.getInstance().getReference(folderName)
     val ref =  storageRef.child(System.currentTimeMillis().toString() +"."+ getExtension(context,imageUri))
@@ -33,6 +33,7 @@ fun uploadToFirebase(context: Context,imageUri: Uri, folderName: String) : Strin
             Toast.makeText(context, "Uploaded", Toast.LENGTH_SHORT).show()
             ref.downloadUrl.addOnSuccessListener {
                 url = it.toString()
+                completionHandler(url)
             }
         }.addOnProgressListener {
             if(!isShowing) {
@@ -42,10 +43,8 @@ fun uploadToFirebase(context: Context,imageUri: Uri, folderName: String) : Strin
 
         }.addOnFailureListener{
             endLoading()
+            completionHandler("")
             Toast.makeText(context, "Image Upload Failed !!", Toast.LENGTH_SHORT).show()
-    }
-    return url.ifEmpty {
-        null
     }
 }
 
