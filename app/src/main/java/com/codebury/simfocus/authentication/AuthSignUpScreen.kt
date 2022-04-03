@@ -18,11 +18,17 @@ import com.codebury.simfocus.helper.Constants
 import com.codebury.simfocus.helper.uploadToFirebase
 import com.google.firebase.storage.FirebaseStorage
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.activity_auth_login_screen.*
-import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.*
+
 import java.io.File
 import java.util.regex.Pattern
 import kotlin.math.sign
+import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.etDepartment
+import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.etEmail
+import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.etFirstName
+import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.etJobTitle
+import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.etLastName
+import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.profileImageView
+import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.signUpBtn
 
 class AuthSignUpScreen : AppCompatActivity() {
 
@@ -38,12 +44,7 @@ class AuthSignUpScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth_sign_up_screen)
-
         supportActionBar?.hide()
-
-        val profileImage: CircleImageView = findViewById(R.id.profileImageView)
-        val signUpBtn: Button = findViewById(R.id.signUpBtn)
-
         imageUri = Uri.fromFile(File("../../drawable/default_avatar.png"))
 
         var launcher = registerForActivityResult(
@@ -51,7 +52,7 @@ class AuthSignUpScreen : AppCompatActivity() {
             ActivityResultCallback {
 
                 if (it.resultCode == RESULT_OK) {
-                    profileImage.setImageURI(it.data?.data)
+                    profileImageView.setImageURI(it.data?.data)
                     imageUri = it.data?.data!!
                 } else if (it.resultCode == RESULT_CANCELED) {
                     Toast.makeText(this, "Image has not been selected", Toast.LENGTH_SHORT).show()
@@ -59,7 +60,7 @@ class AuthSignUpScreen : AppCompatActivity() {
             }
         )
 
-        profileImage.setOnClickListener {
+        profileImageView.setOnClickListener {
             var i = Intent()
             i.action = Intent.ACTION_GET_CONTENT
             i.type = "image/*"
