@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="offWhite">#F1DCDE</color>
     <color name="dark_cyan">#075e54</color>
-    <color name="offWhite">#FAF5F5</color>
     <color name="transparent">#00000000</color>
     //Color Pallet
     <color name="simform_0">#F1DCDE</color>
@@ -22,7 +22,7 @@
     <color name="specialTextColor">@color/simform_500</color>
     <color name="normalTextColor">@color/black</color>
 
-
+    <color name="colorAccent">#d81b60</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>

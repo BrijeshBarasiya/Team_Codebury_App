@@ -4,6 +4,9 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
@@ -12,17 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SimFocus">
-<!--        <activity-->
-<!--            android:name=".dashboard.dashboardActivity"-->
-<!--            android:exported="true" />-->
-<!--            <activity-->
-<!--            android:name=".chatmodule.ChatScreen"-->
-<!--            android:exported="false" />-->
-            <activity
-            android:name=".main_activity.MainActivity"
-            android:exported="true" />
         <activity
-            android:name=".authentication.AuthLoginScreen"
+            android:name="AddPackage.AddPost"
+            android:exported="false" />
+        <activity
+            android:name=".chatmodule.CommentScreen"
             android:exported="false" />
 
         <activity
@@ -30,19 +27,28 @@
             android:exported="false" />
 
         <activity
-            android:name=".splash_screen.SplashActivity"
-            android:exported="true"
-            android:screenOrientation="portrait">
+            android:name=".feed.Feed"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-
-<!--        <activity-->
-
-<!--            android:name=".MainActivity"-->
-<!--            android:exported="true" />-->
+        <activity
+            android:name=".chatmodule.ChatScreen"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.AuthLoginScreen"
+            android:exported="false" />
+        <activity
+            android:name=".splash_screen.SplashActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
