@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigationProfile
             )
         )
+
+
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         var models = arrayOf(

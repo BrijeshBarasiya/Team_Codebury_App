@@ -51,4 +51,14 @@
     <string name="signUpText">SIGN UP</string>
     <string name="have_account">Already have account? Sign In</string>
     <string name="dont_have_account">Do not have an Account? Sign UP</string>
+    <string name="emailSuffix">\@simformsolutions.com</string>
+    <string name="emptyUsernameError">Email should not be empty.</string>
+    <string name="invalidPasswordError">Please Enter valid Password</string>
+    <string name="invalidUsernameError">Email valid email.</string>
+    <string name="password_length">Password must be greater than 8 character</string>
+    <string name="ivalidUsername">Invalid Username</string>
+    <string name="enterFirstNAme">Enter First Name</string>
+    <string name="enterLastName">Enter Last Name</string>
+    <string name="departmentError">Department Must be Selected</string>
+    <string name="jobTitleError">JobTitle Must be Selected</string>
 </resources>

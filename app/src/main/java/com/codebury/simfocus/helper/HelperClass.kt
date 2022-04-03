@@ -1,6 +1,5 @@
 package com.codebury.simfocus.helper
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
@@ -8,14 +7,12 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.view.LayoutInflater
-import android.view.WindowManager
 import android.webkit.MimeTypeMap
 import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.codebury.simfocus.R
 import com.google.firebase.storage.FirebaseStorage
-import com.squareup.picasso.Picasso
 
 private lateinit var alertDialog: AlertDialog
 
@@ -56,7 +53,6 @@ private fun getExtension(context: Context, imageUri: Uri): String {
     return MimeTypeMap.getSingleton()
         .getExtensionFromMimeType(context.contentResolver.getType(imageUri)).toString()
 }
-
 
 fun startLoading(activity: Activity) {
     val builder: AlertDialog.Builder = AlertDialog.Builder(activity)
