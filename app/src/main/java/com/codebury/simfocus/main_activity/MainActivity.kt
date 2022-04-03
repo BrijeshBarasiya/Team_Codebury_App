@@ -1,10 +1,11 @@
 package com.codebury.simfocus.main_activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.bumptech.glide.load.model.Model
 import com.codebury.simfocus.R
 import com.simform.custombottomnavigation.Model
 import kotlinx.android.synthetic.main.activity_main.*
