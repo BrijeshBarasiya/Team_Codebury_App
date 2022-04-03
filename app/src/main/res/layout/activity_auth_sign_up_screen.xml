@@ -82,6 +82,7 @@
                                 android:id="@+id/etFirstName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:maxLines="1"
                                 android:textColor="@color/specialTextColor" />
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,6 +104,7 @@
                                 android:id="@+id/etLastName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:maxLines="1"
                                 android:textColor="@color/specialTextColor" />
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -126,6 +128,58 @@
                             android:id="@+id/etEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:textColor="@color/specialTextColor" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tvPassword"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:hint="Password"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tvFirstName"
+                        app:endIconMode="password_toggle"
+                        app:endIconTint="@color/simform_500"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:startIconDrawable="@drawable/ic_password"
+                        app:startIconTint="@color/simform_500">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:textColor="@color/specialTextColor" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tvDate"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:hint="Date-Of-Birth"
+                        app:placeholderText="YYYY/MM/DD"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tvFirstName"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:startIconDrawable="@drawable/ic_dob"
+                        app:startIconTint="@color/simform_500">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etDateOfBirth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:focusable="false"
                             android:textColor="@color/specialTextColor" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -146,6 +200,7 @@
                             android:id="@+id/etDepartment"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:editable="false"
                             android:inputType="none" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -167,6 +222,7 @@
                             android:id="@+id/etJobTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:editable="false"
                             android:inputType="none" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -208,7 +264,7 @@
                     </RadioGroup>
 
                     <Button
-                        android:id="@+id/signUpBtn"
+                        android:id="@+id/btnSignUP"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_10sdp"

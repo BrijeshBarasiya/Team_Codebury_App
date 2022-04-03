@@ -1,9 +1,15 @@
 package com.codebury.simfocus.authentication
 
+import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
+import com.codebury.simfocus.ModelData.RegisterDataX
 import android.os.PatternMatcher
 import android.provider.MediaStore
 import android.webkit.MimeTypeMap
@@ -14,7 +20,29 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isNotEmpty
 import androidx.core.widget.doOnTextChanged
 import com.codebury.simfocus.R
+import com.codebury.simfocus.WebServices.ApiInterface
+import com.google.gson.Gson
+import com.google.gson.JsonSerializer
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+import kotlinx.android.synthetic.main.activity_auth_login_screen.etPassword
+import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.btnSignUP
+import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.etDateOfBirth
+import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.etDepartment
+import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.etEmail
+import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.etFirstName
+import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.etJobTitle
+import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.etLastName
+import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.genderRg
+import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.view.maleRb
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
 import com.codebury.simfocus.helper.Constants
+import com.codebury.simfocus.helper.endLoading
+import com.codebury.simfocus.helper.startLoading
 import com.codebury.simfocus.helper.uploadToFirebase
 import com.google.firebase.storage.FirebaseStorage
 import de.hdodenhof.circleimageview.CircleImageView
@@ -31,6 +59,7 @@ import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.profileImageV
 import kotlinx.android.synthetic.main.activity_auth_sign_up_screen.signUpBtn
 
 class AuthSignUpScreen : AppCompatActivity() {
+    lateinit var retrofit: ApiInterface
 
     var storageRef = FirebaseStorage.getInstance().getReference("profiles")
     lateinit var imageUri: Uri
@@ -44,7 +73,49 @@ class AuthSignUpScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth_sign_up_screen)
+
         supportActionBar?.hide()
+        val adapter = ArrayAdapter(
+            this,
+            R.layout.item_simple_dropdown_jobtitle,
+            resources.getStringArray(R.array.jobTitlesArray)
+        )
+        etJobTitle.setAdapter(adapter)
+        val newadapter = ArrayAdapter(
+            this,
+            R.layout.item_simple_dropdown_department,
+            resources.getStringArray(R.array.departmentArray)
+        )
+        etDepartment.setAdapter(newadapter)
+        val mCalendar = Calendar.getInstance()
+        val datePickerListener =
+            OnDateSetListener { view, year, monthOfYear, dayOfMonth -> // TODO Auto-generated method stub
+                mCalendar.set(Calendar.YEAR, year)
+                mCalendar.set(Calendar.MONTH, monthOfYear)
+                mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                val myFormat = "yyyy/mm/dd" //In which you need put here
+                val sdf = SimpleDateFormat(myFormat, Locale.ENGLISH)
+                etDateOfBirth.setText(sdf.format(mCalendar.getTime()))
+            }
+        etDateOfBirth.setOnClickListener {
+            DatePickerDialog(
+                this, datePickerListener, mCalendar
+                    .get(Calendar.YEAR), mCalendar.get(Calendar.MONTH),
+                mCalendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
+
+        retrofit = ApiInterface.getRetrofitObject()
+        btnSignUP.setOnClickListener {
+            startLoading(this)
+            uploadToFirebase(this,imageUri,Constants.PROFILE_PICTURE_FOLDER) { url ->
+                uploadData(url)
+            }
+
+        }
+
+        val profileImage: CircleImageView = findViewById(R.id.profileImageView)
+
         imageUri = Uri.fromFile(File("../../drawable/default_avatar.png"))
 
         var launcher = registerForActivityResult(
@@ -105,8 +176,44 @@ class AuthSignUpScreen : AppCompatActivity() {
                 Toast.makeText(this, "Welcome To SimFocus", Toast.LENGTH_SHORT).show()
             }
 
+    fun uploadData(url: String) {
+        val newUser = RegisterDataX(
+            etFirstName.text.toString(),
+            etLastName.text.toString(),
+            etEmail.text.toString(),
+            etDepartment.text.toString(),
+            genderRg.maleRb.text.toString(),
+            etJobTitle.text.toString(),
+            url,
+            etPassword.text.toString(),
+            etDateOfBirth.text.toString(),
+            "true"
+        )
+        Thread().run{
+            retrofit.registerUser(newUser).enqueue(object : Callback<RegisterDataX> {
 
+                override fun onResponse(
+                    call: Call<RegisterDataX>,
+                    response: Response<RegisterDataX>
+                ) {
+                    Log.e("User", "New User")
+                    val intent = Intent(this@AuthSignUpScreen, AuthLoginScreen::class.java)
+                    startActivity(intent)
+                    runOnUiThread {
+                        endLoading()
+                        finish()
+                    }
+                }
+
+                override fun onFailure(call: Call<RegisterDataX>, t: Throwable) {
+                    Log.e("User", "New User not added")
+                    runOnUiThread {
+                        endLoading()
+                        Toast.makeText(this@AuthSignUpScreen, "Login Unsuccesfull", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
         }
-
     }
 }
+
