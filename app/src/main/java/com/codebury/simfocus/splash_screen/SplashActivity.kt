@@ -1,7 +1,8 @@
 package com.codebury.simfocus.splash_screen
 
-import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -14,16 +15,31 @@ import com.codebury.simfocus.R
 import com.codebury.simfocus.authentication.AuthLoginScreen
 import com.codebury.simfocus.main_activity.MainActivity
 
-@SuppressLint("CustomSplashScreen")
+
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var topAnimation: Animation
     private lateinit var bottomAnimation: Animation
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
         supportActionBar?.hide()
+
+        val sharedPreferences: SharedPreferences = this.getSharedPreferences("kotlinsharedpreference",
+            Context.MODE_PRIVATE)
+
+
+
+        intent = if(sharedPreferences.getBoolean("isLogin",false)) {
+            Intent(this,
+                MainActivity::class.java)
+        } else {
+            Intent(this,
+                AuthLoginScreen::class.java)
+        }
+
         topAnimation = AnimationUtils.loadAnimation(this, R.anim.anim_up_to_bottom_splash)
         bottomAnimation = AnimationUtils.loadAnimation(this, R.anim.anim_bottom_to_up_splash)
 
@@ -34,8 +50,6 @@ class SplashActivity : AppCompatActivity() {
         bottomPartTv.animation = bottomAnimation
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this,
-                AuthLoginScreen::class.java)
             startActivity(intent)
             finish()
         }, 2000)
